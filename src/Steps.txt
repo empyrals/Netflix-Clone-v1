@@ -1,0 +1,60 @@
+# Get API KEY
+# Install Axios
+# Create requests.js.
+>> add API_KEY.
+>> add all the end points as object in const requests.
+ {fetchComedyMovies: `discover/movie?api_key=${API_KEY}&with_genres=35}
+ fetchActionMovies: `discover/movie?api_key=${API_KEY}&with_genres=28
+ fetchAdventureMovies: `discover/movie?api_key=${API_KEY}&with_genres=12
+ fetchDocumentaryMovies: `discover/movie?api_key=${API_KEY}&with_genres=99
+ >> export the requests    
+
+# Create axios.js.
+>> import axios
+>> creaet an instance with axios.create({basUrl: "api.mov.org/3})
+>> export instance
+
+>> INside app.js
+import <Row> with diff title each as component
+>> create Row.js component
+>> render title as prop in row js component.
+>> Create movies state as empty array.
+>> create another prop fetchUrl and add value of it as requests.fetch... in app.js row componnetn.
+>> now to add values to movies state.
+>> create a useeffect with async function using axios.get(fetchUrl);
+>> return the request and function, add outer url to dependency so it renders every time url changes
+>> set the movies to request array tht we got from the api_key
+>> render the movies from movies state
+>> to render image we need a bse url as image.tmdb.org/t/p/original/
+>> Crete row.css to style image
+{for scroll to hide use : .row_posters::-webkit-scrollbar{ display: none;}}
+>> render all other categories
+>> only netflixoriginals are bigger so use isLarge prop in row compoonent and while rendering imag use isLarge? remder large : render small
+
+
+>> now Banner and Navbar left..
+ >> Create Banner.js and import Banner component in app
+ >> inside Banner..
+ insie header
+ a background img 
+ {title}
+ {2 buttons inside div}
+ {desc}
+
+ >> create a movie state as an empty array to store movies
+ >> import axios js and requests js
+ >> create useeffect to fetch movie from api
+  inside useeffect create async func fetchData and const req = await axios.get(requests.fetchoriginal)
+  now select 1 random movie from request usng mat.random * req.data.res.length-1 and set it to setmovie
+
+  >> To add trailer popups
+   install 2 packages
+   react-youtube, movie-trailer
+
+   Inside row.js
+   import youtube from react-youtube
+   const opts={
+       height: "390',width:"100%", playerVars:{ autoplay:1},};
+   
+   create a state trailerUrl 
+   {trailerUrl && <YouTube videoId = {trailerUrl} opts={opts}}
